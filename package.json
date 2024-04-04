@@ -1,0 +1,10 @@
+{
+	"name": "node-red-contrib-scenario-timer",
+	"version": "0.0.1",
+	"description": "A sophisticated node to control lights in scenarios against intrusion.",
+	"node-red": {
+		"nodes": {
+			"lower-case": "scenario-timer.js"
+		}
+	}
+}
