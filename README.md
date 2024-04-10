@@ -1,2 +1,2 @@
 # node-red-contrib-scenario-timer
-TBD
+A sophisticated node to control lights in scenarios against intrusion.
