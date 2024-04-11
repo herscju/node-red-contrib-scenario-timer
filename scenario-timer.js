@@ -33,13 +33,13 @@ module.exports = function (RED) {
         let node = this;
 
         // Prepare observers
-        let ledBulb = new LedBulb("ledbulb", node);
-        let nodeRed = new NodeRed("nodered", node);
-        let trigger = new Trigger("trigger", node);
+        const ledBulb = new LedBulb("ledbulb", node);
+        const nodeRed = new NodeRed("nodered", node);
+        const trigger = new Trigger("trigger", node);
 
         // Get new instance of generator
         const generator = new Generator();
-        let status = generator.setIndicator(Indicator.INDICATORS[0]).state();
+        let status = generator.setIndicator(Indicator.INDICATORS[0]).setDebug(true).state();
 
         // Set start status message
         this.status({ "fill": "grey", "shape": "ring", "text": "Ready" });
@@ -58,7 +58,7 @@ module.exports = function (RED) {
                         break;
 
                     case Generator.TERMINATE:
-                        status = generator.terminate("Terminate generation and timer tasks").state();
+                        status = generator.terminate("Terminate generator and timer tasks").state();
 
                         // Update status
                         this.status({ "fill": "red", "shape": "ring", "text": status.message });
