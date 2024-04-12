@@ -39,7 +39,7 @@ module.exports = function (RED) {
 
         // Get new instance of generator
         const generator = new Generator();
-        let status = generator.setIndicator(Indicator.INDICATORS[0]).setDebug(true).state();
+        let status = generator.setIndicator(Indicator.INDICATORS[0]).setDebug(true).status();
 
         // Set start status message
         this.status({ "fill": "grey", "shape": "ring", "text": "Ready" });
@@ -51,21 +51,21 @@ module.exports = function (RED) {
 
                 switch (msg.action) {
                     case Generator.GENERATE:
-                        status = generator.setTimeout(node.timeout).init(ledBulb, nodeRed, trigger).generate(Date.now(), Number.MIN_SAFE_INTEGER).state();
+                        status = generator.setTimeout(node.timeout).init(ledBulb, nodeRed, trigger).generate(Date.now(), Number.MIN_SAFE_INTEGER).status();
 
                         // Update status
                         this.status({ "fill": "green", "shape": "dot", "text": status.message });
                         break;
 
                     case Generator.TERMINATE:
-                        status = generator.terminate("Terminate generator and timer tasks").state();
+                        status = generator.terminate("Terminate generator and timer tasks").status();
 
                         // Update status
                         this.status({ "fill": "red", "shape": "ring", "text": status.message });
                         break;
 
                     case Generator.UPDATE:
-                        status = generator.done().state();
+                        status = generator.done().status();
 
                         // Update status
                         this.status({ "fill": "green", "shape": "ring", "text": status.message });
@@ -82,6 +82,19 @@ module.exports = function (RED) {
             }
 
             // Set return messages "node.send(messages);" is not neccessary here. It is done within the registered observers!
+        });
+
+        // https://nodered.org/docs/creating-nodes/node-js
+        node.on('close', (removed, done) => {
+            node.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+            if (removed) {
+                status = generator.terminate("Terminate generator and timer tasks").status();
+
+                // Update status
+                this.status({ "fill": "red", "shape": "ring", "text": status.message });
+            }
+            node.log(done);
+            done.then(f).catch(e => console.error(`An error has been occured. ${e}`));
         });
     }
 
