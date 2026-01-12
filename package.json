@@ -1,15 +1,3 @@
-<<<<<<< HEAD
-{
-	"name": "node-red-contrib-scenario-timer",
-	"version": "0.0.1",
-	"description": "A sophisticated node to control lights in scenarios against intrusion.",
-	"node-red": {
-		"nodes": {
-			"lower-case": "scenario-timer.js"
-		}
-	}
-}
-=======
 {
   "name": "node-red-contrib-scenario-timer",
   "version": "0.0.2",
@@ -29,4 +17,3 @@
   "author": "Jürg Hersche (Green@rt)",
   "license": "MIT"
 }
->>>>>>> fa6f617 (Updated Javasccript code with latest features.)
