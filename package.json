@@ -1,19 +1,10 @@
 {
-  "name": "node-red-contrib-scenario-timer",
-  "version": "0.0.2",
-  "description": "A sophisticated node to control lights in scenarios against intrusion.",
-  "node-red": {
-    "nodes": {
-      "lower-case": "scenario-timer.js"
-    }
-  },
-  "main": "scenario-timer.js",
-  "directories": {
-    "lib": "lib"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "Jürg Hersche (Green@rt)",
-  "license": "MIT"
+	"name": "node-red-contrib-scenario-timer",
+	"version": "0.0.1",
+	"description": "A sophisticated node to control lights in scenarios against intrusion.",
+	"node-red": {
+		"nodes": {
+			"lower-case": "scenario-timer.js"
+		}
+	}
 }

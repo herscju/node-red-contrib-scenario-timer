@@ -1,57 +1,8 @@
-<<<<<<< HEAD
 <script type="module" src="./lib/Indicator.js"></script>
-<script type="module" src="./lib/Subject.js"></script>
 <script type="module" src="./lib/LedBulb.js"></script>
 <script type="module" src="./lib/NodeRed.js"></script>
 <script type="module" src="./lib/Trigger.js"></script>
 <script type="module" src="./lib/GeneratorEvent.js"></script>
-<script type="module" src="./lib/GeneratorTarget.js"></script>
-<script type="module" src="./lib/Util.js"></script>
-<script type="module" src="./lib/Generator.js"></script>
-<script type="module" src="./lib/Timer.js"></script>
-
-<script type="text/javascript">
-    RED.nodes.registerType("scenario-timer", {
-        "category": "function",
-        "color": "#ffecb3",
-        "defaults": {
-            "name": { "value": "Scenario" },
-            "timeout": { "value": "10", "required": true, "validate": RED.validators.number() },
-            "update": { "value": "0", "required": true, "validate": RED.validators.number() }
-        },
-        "inputs": 1,
-        "outputs": 5,
-        "icon": "situation.svg",
-        "label": function () {
-            return this.name || "scenario-timer";
-        }
-    });
-</script>
-
-<!-- https://fontawesome.com/v4/icons/ -->
-<script type="text/html" data-template-name="scenario-timer">
-    <div class="form-row">
-        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
-        <input type="text" id="node-input-name" placeholder="Name" />
-    </div>
-    <div class="form-row">
-        <label for="node-input-timeout"><i class="fa fa-clock-o"></i> Timeout</label>
-        <input type="text" id="node-input-timeout" placeholder="Timeout (10s)" />
-    </div>
-    <div class="form-row">
-        <label for="node-input-update"><i class="fa fa-repeat"></i> Repetition (update)</label>
-        <input type="text" id="node-input-update" placeholder="Update (0s)" />
-    </div>
-</script>
-
-<script type="text/html" data-help-name="scenario-timer">
-    <p>A sophisticated node to control lights in scenarios against intrusion.</p>
-=======
-<script type="module" src="./lib/Indicator.js"></script>
-<script type="module" src="./lib/LedBulb.js"></script>
-<script type="module" src="./lib/NodeRed.js"></script>
-<script type="module" src="./lib/Trigger.js"></script>
-<script type="module" src="./lib/Event.js"></script>
 <script type="module" src="./lib/Subject.js"></script>
 <script type="module" src="./lib/Util.js"></script>
 <script type="module" src="./lib/Generator.js"></script>
@@ -64,8 +15,6 @@
         "defaults": {
             "name": { "value": "Scenario" },
             "timeout": { "value": "2", "required": true, "validate": RED.validators.number() }
-			"maxnumber": { "value": "999", "required": true, "validate": RED.validators.number() },
-			"minontime": { "value": "999", "required": true, "validate": RED.validators.number() }
         },
         "inputs": 1,
         "outputs": 5,
@@ -87,14 +36,6 @@
         <input type="text" id="node-input-timeout" placeholder="Timeout" />
     </div>
     <div class="form-row">
-        <label for="node-input-maxnumber"><i class="fa fa-clock-o"></i> Max. number of indicators</label>
-        <input type="text" id="node-input-maxnumber" placeholder="Max. number of indicators" />
-    </div>
-    <div class="form-row">
-        <label for="node-input-minontime"><i class="fa fa-clock-o"></i> Min. ON time</label>
-        <input type="text" id="node-input-minontime" placeholder="Min. ON time" />
-    </div>
-    <div class="form-row">
         <label for="node-input-update"><i class="fa fa-repeat"></i> Repetition (update)</label>
         <input type="text" id="node-input-update" placeholder="Repetition (update)" />
     </div>
@@ -102,5 +43,4 @@
 
 <script type="text/html" data-help-name="scenario-timer">
     <p>A sophisticated node to control lights in scenarios against intrusion.</p>
->>>>>>> fa6f617 (Updated Javasccript code with latest features.)
 </script>
