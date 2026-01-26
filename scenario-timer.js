@@ -45,6 +45,7 @@ module.exports = function (RED) {
         this.status({ "fill": "grey", "shape": "ring", "text": "Ready" });
 
         node.on('input', (msg) => {
+            console.log(JSON.stringify(msg))
 
             // Check input. Payload must by a valid number, preferably a timestamp.
             if (!isNaN(msg.payload)) {
