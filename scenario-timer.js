@@ -11,12 +11,12 @@
  * 
  * @param {*} RED 
  */
-const Generator = require("./lib/Generator.js").default;
+const Generator = require("./lib/Generator.js");
 const Indicator = require("./lib/Indicator.js");
 const LedBulb = require("./lib/LedBulb.js");
 const NodeRed = require("./lib/NodeRed.js");
-const Subject = require("./lib/Subject.js");
 const Trigger = require("./lib/Trigger.js");
+const Subject = require("./lib/Subject.js");
 const Timer = require("./lib/Timer.js");
 const Util = require("./lib/Util.js");
 
