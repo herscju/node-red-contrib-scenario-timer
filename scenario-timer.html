@@ -14,7 +14,8 @@
         "color": "#ffecb3",
         "defaults": {
             "name": { "value": "Scenario" },
-            "timeout": { "value": "2", "required": true, "validate": RED.validators.number() }
+            "timeout": { "value": "2", "required": true, "validate": RED.validators.number() },
+            "maxnumber": { "value": "5", "required": true, "validate": RED.validators.number() }
         },
         "inputs": 1,
         "outputs": 5,
@@ -36,7 +37,15 @@
         <input type="text" id="node-input-timeout" placeholder="Timeout" />
     </div>
     <div class="form-row">
-        <label for="node-input-update"><i class="fa fa-repeat"></i> Repetition (update)</label>
+        <label for="node-input-maxnumber"><i class="fa fa-list-ol"></i> Max. indic.</label>
+        <input type="text" id="node-input-maxnumber" placeholder="Max. number of indicators" />
+    </div>
+    <div class="form-row">
+        <label for="node-input-minontime"><i class="fa fa-clock-o"></i> Min. ON time</label>
+        <input type="text" id="node-input-minontime" placeholder="Min. ON time" />
+    </div>
+    <div class="form-row">
+        <label for="node-input-update"><i class="fa fa-repeat"></i> Update</label>
         <input type="text" id="node-input-update" placeholder="Repetition (update)" />
     </div>
 </script>

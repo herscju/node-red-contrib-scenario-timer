@@ -11,14 +11,14 @@
  * 
  * @param {*} RED 
  */
+const Generator = require("./lib/Generator.js").default;
 const Indicator = require("./lib/Indicator.js");
 const LedBulb = require("./lib/LedBulb.js");
 const NodeRed = require("./lib/NodeRed.js");
-const Trigger = require("./lib/Trigger.js");
 const Subject = require("./lib/Subject.js");
-const Util = require("./lib/Util.js");
-const Generator = require("./lib/Generator.js");
+const Trigger = require("./lib/Trigger.js");
 const Timer = require("./lib/Timer.js");
+const Util = require("./lib/Util.js");
 
 // Module definitions
 module.exports = function (RED) {
@@ -28,6 +28,8 @@ module.exports = function (RED) {
         RED.nodes.createNode(this, config);
 
         this.timeout = config.timeout;
+        this.maxNumber = config.maxnumber;
+        this.minOnTime = config.minontime;
         this.update = config.update;
 
         let node = this;
@@ -44,15 +46,19 @@ module.exports = function (RED) {
         // Set start status message
         this.status({ "fill": "grey", "shape": "ring", "text": "Ready" });
 
-        node.on('input', (msg) => {
-            console.log(JSON.stringify(msg))
-
+        node.on("input", (msg) => {
+        
             // Check input. Payload must by a valid number, preferably a timestamp.
-            if (!isNaN(msg.payload)) {
+            if ((msg.payload === true || msg.payload === false) && msg.action && !Number.isNaN(msg.time)) {
+
+                generator.setTimeout(node.timeout) //
+                    .setMaxNumber(node.maxNumber) //
+                    .setMinOnTime(node.minOnTime) //
+                    .init(ledBulb, nodeRed, trigger);
 
                 switch (msg.action) {
                     case Generator.GENERATE:
-                        status = generator.setTimeout(node.timeout).init(ledBulb, nodeRed, trigger).generate(Date.now(), Number.MIN_SAFE_INTEGER).state();
+                        status = generator.generate(msg.time, Number.MIN_SAFE_INTEGER).state();
 
                         // Update status
                         this.status({ "fill": "green", "shape": "dot", "text": status.message });
